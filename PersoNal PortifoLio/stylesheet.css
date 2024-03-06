@@ -233,6 +233,7 @@
     font-weight: 13px;
     border-right: 10px;
     border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
     box-shadow: 1px 1px 20px #012290f7,
                 1px 1px 40px #0053b8f7;
 }
@@ -270,6 +271,17 @@
   animation: slideTop 1s ease forwards;
   animation-delay: 2s;
   box-shadow: 0 0 5px #0ef;
+}
+.read:hover
+{
+    background: #0ef;
+    color: black;
+    box-shadow: 0 0 20px #0ef;
+}
+.service-list div:hover
+{
+    transform: translateY(-20px);
+    /* its about the animation of My Services */
 }
 
 
