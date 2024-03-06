@@ -257,7 +257,17 @@
 }
 .read
 {
-
+  display: inline-block;
+  padding: 12px 20px;
+  background: #0ef;
+  border-radius: 40px;
+  font-size: 16px;
+  color: #081b29;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-weight: 600;
+  opacity: 0;
+  animation: slideTop;
 }
 
 
