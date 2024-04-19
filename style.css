@@ -626,6 +626,7 @@ section{
     color: #000;
     box-shadow: 0  0 20px #0ef;
 }
+/*
 .contact-form form{
     position: relative;
 }
@@ -665,6 +666,69 @@ section{
     background: #0ef;
     color: #081b29;
     box-shadow: 0 0 20px #0ef;
+}
+*/
+.contact form
+{
+    width: 600px;
+    text-align: center;
+}
+form .input-box
+{
+    display: flex;
+    justify-content: space-between;
+}
+.input-box .input-field
+{
+    width: 48.5%;
+}
+.field .item
+{
+    width: 100%;
+    padding: 18px;
+    background: transparent;
+    border: 2px solid #0ef;
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #ededed;
+    margin: 12px 0;
+}
+.field .item ::placeholder
+{
+    color: rgba(255, 255, 255, .3);
+}
+.field .error-txt
+{
+    font-size: 14.5px;
+    color: #d93025;
+    text-align: left;
+    margin: -px 0 10px;
+    display: none;
+}
+form .textarea-field .item
+{
+    resize: none;
+}
+form button
+{
+    padding: 12px 32px;
+    background-color: #0ef;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0 0 10px #0ef;
+    font-size: 16px;
+    color: #333;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: .7s;
+}
+form button:hover
+{
+    box-shadow: none;
 }
 .last-text p{
     width: 100%;
