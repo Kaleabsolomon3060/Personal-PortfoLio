@@ -33,7 +33,7 @@ function sendEmail() {
             if (message === "OK") {
                 Swal.fire({
                     title: "Success!",
-                    text: "Message sent successfully!",
+                    text: "Message sent Successfully!",
                     icon: "success"
                 }).then(() => {
                     document.getElementById('contactForm').reset(); // Reset the form after the alert is closed
