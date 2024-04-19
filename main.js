@@ -51,30 +51,37 @@ function checkInputs() {
     const items = document.querySelectorAll(".item");
 
     for (const item of items) {
+        // Check if the input value is empty
         if (item.value == "") {
+            // Add error class to the input and its parent element
             item.classList.add("error");
             item.parentElement.classList.add("error");
         }
-
+    
+        // Validate email field if it's not empty
         if (items[1].value != ""){
             checkEmail();
         }
+    
+        // Add event listener to validate email on keyup
         items[1].addEventListener("keyup", () => {
             checkEmail();
         });
-
+    
+        // Add event listener to remove error styles when typing in other input fields
         item.addEventListener("keyup", () => {
             if (item.value != "") {
+                // Remove error styles if input is not empty
                 item.classList.remove("error");
                 item.parentElement.classList.remove("error");
-            }
-            else {
+            } else {
+                // Add error styles if input is empty
                 item.classList.add("error");
                 item.parentElement.classList.add("error");
             }
         })
     }
-}
+    
 
 function checkEmail() {
     const emailRegex = /^([A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})?$/;
