@@ -694,6 +694,13 @@ form .input-box
     color: #ededed;
     margin: 12px 0;
 }
+.field.error .item {
+    border-color: #d93025;
+}
+.field.error .error-txt{
+    display: block;
+}
+
 .field .item ::placeholder
 {
     color: rgba(255, 255, 255, .3);
