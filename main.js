@@ -47,6 +47,25 @@ function sendEmail() {
         error => console.error("Error:", error)
     );
 }
+// Function to add input event listeners to remove error styling and error message on typing
+function addInputEventListeners() {
+    const inputFields = document.querySelectorAll('.item');
+    inputFields.forEach(inputField => {
+        inputField.addEventListener('input', () => {
+            const parent = inputField.parentElement;
+            if (inputField.value.trim() !== "") {
+                inputField.classList.remove("error");
+                parent.classList.remove("error");
+                parent.querySelector(".error-txt").innerText = ""; // Clear error message
+            }
+        });
+    });
+}
+
+// Attach input event listeners to remove error styling and error message on typing
+addInputEventListeners();
+
+// Form submission event listener
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     
@@ -59,19 +78,17 @@ form.addEventListener("submit", (e) => {
     }
 });
 
+// Function to check if all inputs are filled
 function checkInputs() {
     let isValid = true;
     const items = document.querySelectorAll(".item");
 
     for (const item of items) {
-        // Check if the input value is empty
         if (item.value.trim() === "") {
-            // Add error class to the input and its parent element
             item.classList.add("error");
             item.parentElement.classList.add("error");
             isValid = false;
         } else {
-            // Remove error styles if input is not empty
             item.classList.remove("error");
             item.parentElement.classList.remove("error");
         }
@@ -79,6 +96,7 @@ function checkInputs() {
     return isValid;
 }
 
+// Function to check if email is valid
 function checkEmail() {
     const emailValue = email.value.trim();
     const emailRegex = /^([A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})?$/;
@@ -100,5 +118,3 @@ function checkEmail() {
         return true;
     }
 }
-
-
