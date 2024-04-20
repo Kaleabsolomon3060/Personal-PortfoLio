@@ -47,68 +47,58 @@ function sendEmail() {
         error => console.error("Error:", error)
     );
 }
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    // Check if all inputs are filled and validate email
+    const isFormValid = checkInputs() && checkEmail();
+    
+    // If the form is valid, proceed with sending the email
+    if (isFormValid) {
+        sendEmail();
+    }
+});
+
 function checkInputs() {
+    let isValid = true;
     const items = document.querySelectorAll(".item");
 
     for (const item of items) {
         // Check if the input value is empty
-        if (item.value == "") {
+        if (item.value.trim() === "") {
             // Add error class to the input and its parent element
             item.classList.add("error");
             item.parentElement.classList.add("error");
+            isValid = false;
+        } else {
+            // Remove error styles if input is not empty
+            item.classList.remove("error");
+            item.parentElement.classList.remove("error");
         }
-    
-        // Validate email field if it's not empty
-        if (items[1].value != ""){
-            checkEmail();
-        }
-    
-        // Add event listener to validate email on keyup
-        items[1].addEventListener("keyup", () => {
-            checkEmail();
-        });
-    
-        // Add event listener to remove error styles when typing in other input fields
-        item.addEventListener("keyup", () => {
-            if (item.value != "") {
-                // Remove error styles if input is not empty
-                item.classList.remove("error");
-                item.parentElement.classList.remove("error");
-            } else {
-                // Add error styles if input is empty
-                item.classList.add("error");
-                item.parentElement.classList.add("error");
-            }
-        })
     }
-    
+    return isValid;
+}
 
 function checkEmail() {
+    const emailValue = email.value.trim();
     const emailRegex = /^([A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})?$/;
-    const errorTxtEmail = document.querySelectorAll(".error-txt.email");
+    const errorTxtEmail = document.querySelector(".error-txt.email");
 
-    if (!email.value.match(emailRegex)) {
+    if (!emailValue.match(emailRegex)) {
         email.classList.add("error");
         email.parentElement.classList.add("error");
 
-        if (email.value != "") {
-            errorTxtEmail.innerText = "Enter a valid email adress";
-        }
-        else {
+        if (emailValue !== "") {
+            errorTxtEmail.innerText = "Enter a valid email address";
+        } else {
             errorTxtEmail.innerText = "Email can't be blank";
         }
-    }
-    else {
+        return false;
+    } else {
         email.classList.remove("error");
         email.parentElement.classList.remove("error");
+        return true;
     }
 }
 
-
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    checkInputs();
-    sendEmail();
-});
 
