@@ -59,7 +59,7 @@ function addInputEventListeners() {
                 parent.querySelector(".error-txt").innerText = ""; // Clear error message
             }
         });
-    });
+    });  
 }
 
 // Attach input event listeners to remove error styling and error message on typing
@@ -68,10 +68,10 @@ addInputEventListeners();
 // Form submission event listener
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    
+
     // Check if all inputs are filled and validate email
     const isFormValid = checkInputs() && checkEmail();
-    
+
     // If the form is valid, proceed with sending the email
     if (isFormValid) {
         sendEmail();
